@@ -1,0 +1,43 @@
+.card {
+  margin: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.75);
+  transition: transform 100ms ease-in;
+  cursor: pointer;
+  flex: 1;
+}
+
+.card:hover {
+  transform: scale(1.07);
+}
+
+.card__image {
+  overflow: hidden;
+}
+
+.card__image > img {
+  object-fit: cover;
+  height: 200px;
+  width: 100%;
+}
+
+.card__info {
+  margin-top: -9px;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1;
+  padding-top: 20px;
+}
+
+.card__info > h2 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.card__info > h4 {
+  font-size: 14px;
+  font-weight: 300;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
