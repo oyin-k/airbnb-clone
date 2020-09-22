@@ -5,23 +5,25 @@ import { db } from "../services/firebase";
 import { Button } from "@material-ui/core";
 
 import SearchResult from "../components/SearchResult";
+import SkeletonCard from "../components/SkeletonCard";
 
 import "./SearchPage.css";
 
 function SearchPage() {
   const [apartments, setApartments] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    console.log("effect");
+    setLoading(true);
     const unsub = db.collection("apartments").onSnapshot((snapshot) => {
       const allApartments = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
       setApartments(allApartments);
+      setLoading(false);
     });
     return () => {
-      console.log("cleanup");
       unsub();
     };
   }, []);
@@ -37,18 +39,20 @@ function SearchPage() {
         <Button variant="outlined">Rooms and Beds</Button>
         <Button variant="outlined">More Filters</Button>
       </div>
-
-      {apartments.map((apartment) => (
-        <SearchResult
-          img={apartment.image}
-          location={apartment.location}
-          title={apartment.title}
-          description={apartment.description}
-          star={apartment.star}
-          price={apartment.price}
-          total={apartment.total}
-        />
-      ))}
+      {loading && <SkeletonCard />}
+      {!loading &&
+        apartments.map((apartment) => (
+          <SearchResult
+            key={apartment.id}
+            img={apartment.image}
+            location={apartment.location}
+            title={apartment.title}
+            description={apartment.description}
+            star={apartment.star}
+            price={apartment.price}
+            total={apartment.total}
+          />
+        ))}
     </div>
   );
 }
