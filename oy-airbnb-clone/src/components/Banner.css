@@ -8,8 +8,14 @@
 .banner__info {
   background-color: black;
   color: white;
-  padding: 20vh 50px 40px 50px;
+  padding: 20vh 3rem 2.5rem 5rem;
   width: 300px;
+}
+
+@media screen and (max-width: 1000px) {
+  .banner__info {
+    padding: 14vh 3rem 2rem 3rem;
+  }
 }
 
 .banner__search {
@@ -21,11 +27,11 @@
   background-color: #fff !important;
   font-weight: 900 !important;
   text-transform: inherit !important;
-  color: #ff7779 !important;
+  color: #ff385c !important;
 }
 
 .banner__info > button {
-  background-color: #ff7779;
+  background-color: #ff385c;
   color: #fff;
   text-transform: inherit;
   margin-top: 20px;
@@ -34,7 +40,7 @@
 
 .banner__info > button:hover {
   background-color: #fff;
-  color: #ff7779;
+  color: #ff385c;
 }
 
 .banner__info > h5 {

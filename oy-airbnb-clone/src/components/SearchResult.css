@@ -69,4 +69,76 @@
 
 .searchResult__price > p {
   text-align: right;
+  margin-top: 8px;
+}
+
+@media screen and (max-width: 640px) {
+  .searchResult {
+    flex-direction: column;
+  }
+  .searchResult > img {
+    width: 100%;
+  }
+  .searchResult__info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+  }
+
+  .searchResult__heart {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+
+  .searchResult__infoTop {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .searchResult__infoTop > p {
+    font-size: 1rem;
+  }
+
+  .searchResult__infoTop > h3 {
+    font-weight: 300;
+    margin-top: 10px;
+  }
+
+  .searchResult__infoTop > .searchResult__infoTopDivider {
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  .searchResult__infoBottom {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+  }
+
+  .searchResult__stars {
+    margin-top: 8px;
+    font-size: 1rem;
+  }
+
+  .searchResult__stars strong {
+    font-weight: 400;
+  }
+
+  .searchResult__price {
+    position: static;
+  }
+
+  .searchResult__price > h2 {
+    font-size: 1rem;
+    margin-top: 8px;
+  }
+
+  .searchResult__price > p {
+    text-align: left;
+    text-decoration: underline;
+    color: gray;
+    font-size: 14px;
+    margin-top: 4px;
+  }
 }

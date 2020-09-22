@@ -12,20 +12,26 @@ import logo from "../airbnblogo.png";
 function Header() {
   return (
     <div className="header">
-      <Link to="/">
-        <img src={logo} alt="" className="header__icon" />
-      </Link>
+      <div className="header__left">
+        <Link to="/">
+          <img src={logo} alt="" className="header__icon" />
+        </Link>
+      </div>
 
       <div className="header__center">
-        <input type="text" />
+        <input type="text" placeholder="Start your search" />
         <SearchIcon />
       </div>
 
       <div className="header__right">
         <p>Become a host</p>
-        <LanguageIcon />
-        <ExpandMoreIcon />
-        <Avatar />
+        <div className="header__rightLanguage">
+          <LanguageIcon />
+          <ExpandMoreIcon />
+        </div>
+        <div className="header__rightAvatar">
+          <Avatar />
+        </div>
       </div>
     </div>
   );

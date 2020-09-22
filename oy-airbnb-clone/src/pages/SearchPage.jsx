@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+import { db } from "../services/firebase";
 
 import { Button } from "@material-ui/core";
 
@@ -7,6 +9,23 @@ import SearchResult from "../components/SearchResult";
 import "./SearchPage.css";
 
 function SearchPage() {
+  const [apartments, setApartments] = useState([]);
+
+  useEffect(() => {
+    console.log("effect");
+    const unsub = db.collection("apartments").onSnapshot((snapshot) => {
+      const allApartments = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setApartments(allApartments);
+    });
+    return () => {
+      console.log("cleanup");
+      unsub();
+    };
+  }, []);
+
   return (
     <div className="searchPage">
       <div className="searchPage__info">
@@ -18,69 +37,18 @@ function SearchPage() {
         <Button variant="outlined">Rooms and Beds</Button>
         <Button variant="outlined">More Filters</Button>
       </div>
-      <SearchResult
-        img="https://a0.muscache.com/im/pictures/840816af-ead6-42e6-9fdb-a6645a289a10.jpg?aki_policy=large"
-        location="Private room in center of London"
-        title="Stay in this spacious Luxury house"
-        description="1 guest · 1 bedroom · 1 bed · 1.5 shared bathroom · Wifi · Kitchen · Free parking · Washing Machine"
-        star={4.73}
-        price="$30 / night"
-        total="$117 total"
-      />
-      <SearchResult
-        img="https://a0.muscache.com/im/pictures/840816af-ead6-42e6-9fdb-a6645a289a10.jpg?aki_policy=large"
-        location="Private room in center of London"
-        title="Stay in this spacious Luxury house"
-        description="1 guest · 1 bedroom · 1 bed · 1.5 shared bathroom · Wifi · Kitchen · Free parking · Washing Machine"
-        star={4.73}
-        price="$30 / night"
-        total="$117 total"
-      />
-      <SearchResult
-        img="https://a0.muscache.com/im/pictures/840816af-ead6-42e6-9fdb-a6645a289a10.jpg?aki_policy=large"
-        location="Private room in center of London"
-        title="Stay in this spacious Luxury house"
-        description="1 guest · 1 bedroom · 1 bed · 1.5 shared bathroom · Wifi · Kitchen · Free parking · Washing Machine"
-        star={4.73}
-        price="$30 / night"
-        total="$117 total"
-      />
-      <SearchResult
-        img="https://a0.muscache.com/im/pictures/840816af-ead6-42e6-9fdb-a6645a289a10.jpg?aki_policy=large"
-        location="Private room in center of London"
-        title="Stay in this spacious Luxury house"
-        description="1 guest · 1 bedroom · 1 bed · 1.5 shared bathroom · Wifi · Kitchen · Free parking · Washing Machine"
-        star={4.73}
-        price="$30 / night"
-        total="$117 total"
-      />
-      <SearchResult
-        img="https://a0.muscache.com/im/pictures/840816af-ead6-42e6-9fdb-a6645a289a10.jpg?aki_policy=large"
-        location="Private room in center of London"
-        title="Stay in this spacious Luxury house"
-        description="1 guest · 1 bedroom · 1 bed · 1.5 shared bathroom · Wifi · Kitchen · Free parking · Washing Machine"
-        star={4.73}
-        price="$30 / night"
-        total="$117 total"
-      />
-      <SearchResult
-        img="https://a0.muscache.com/im/pictures/840816af-ead6-42e6-9fdb-a6645a289a10.jpg?aki_policy=large"
-        location="Private room in center of London"
-        title="Stay in this spacious Luxury house"
-        description="1 guest · 1 bedroom · 1 bed · 1.5 shared bathroom · Wifi · Kitchen · Free parking · Washing Machine"
-        star={4.73}
-        price="$30 / night"
-        total="$117 total"
-      />
-      <SearchResult
-        img="https://a0.muscache.com/im/pictures/840816af-ead6-42e6-9fdb-a6645a289a10.jpg?aki_policy=large"
-        location="Private room in center of London"
-        title="Stay in this spacious Luxury house"
-        description="1 guest · 1 bedroom · 1 bed · 1.5 shared bathroom · Wifi · Kitchen · Free parking · Washing Machine"
-        star={4.73}
-        price="$30 / night"
-        total="$117 total"
-      />
+
+      {apartments.map((apartment) => (
+        <SearchResult
+          img={apartment.image}
+          location={apartment.location}
+          title={apartment.title}
+          description={apartment.description}
+          star={apartment.star}
+          price={apartment.price}
+          total={apartment.total}
+        />
+      ))}
     </div>
   );
 }

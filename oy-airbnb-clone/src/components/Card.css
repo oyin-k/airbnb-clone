@@ -41,3 +41,15 @@
   margin-top: 8px;
   margin-bottom: 8px;
 }
+
+@media screen and (max-width: 800px) {
+  .card {
+    flex: 1 1 33.333%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .card {
+    flex: 1 1 100%;
+  }
+}

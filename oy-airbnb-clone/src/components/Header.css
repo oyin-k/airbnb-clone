@@ -5,22 +5,29 @@
   position: sticky;
   top: 0;
   background-color: #fff;
-  padding: 20px 0;
+  padding: 20px 80px;
   z-index: 100;
-  width: 100%;
+  /* width: 100%; */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.07);
+  /* padding: 0 80px; */
+}
+
+.header__left {
+  flex: 1 1 8rem;
 }
 
 .header__icon {
   object-fit: contain;
   height: 40px;
-  margin-left: 80px;
+  /* margin-left: 80px; */
 }
 
 .header__center {
   display: flex;
   flex: 1;
   align-items: center;
-  max-width: fit-content;
+  /* max-width: fit-content; */
+  flex: 1 1 20%;
   padding: 10px;
   height: 30px;
   border: 1px solid lightgrey;
@@ -31,13 +38,77 @@
   border: none;
   padding: 10px;
   outline-width: 0;
-  /* width: 250px; */
+  width: 100%;
+}
+
+.header__center > input::placeholder {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #747474;
+}
+
+.header__center > svg {
+  padding: 6px;
+  border-radius: 50%;
+  background-color: #ff385c;
+  color: #fff;
+  font-size: 1.25rem;
 }
 
 .header__right {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 15vw;
-  margin-right: 80px;
+  justify-content: flex-end;
+  flex: 1 1 8rem;
+  /* width: 20vw; */
+  /* margin-right: 80px; */
+}
+
+.header__right > p {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 16px;
+}
+
+.header__right > p:hover {
+  cursor: pointer;
+  background-color: #f7f7f7;
+  border-radius: 30px;
+}
+
+.header__right > .header__rightLanguage {
+  font-weight: 600;
+  padding: 12px 16px;
+}
+
+.header__right > .header__rightLanguage > svg {
+  width: 1rem !important;
+  height: 1rem !important;
+}
+
+.header__right > .header__rightLanguage:hover {
+  cursor: pointer;
+  background-color: #f7f7f7;
+  border-radius: 30px;
+}
+
+.header__right > .header__rightAvatar {
+  padding: 0 8px;
+}
+
+.header__right > .header__rightAvatar svg {
+  font-size: 1rem !important;
+}
+
+@media screen and (max-width: 1000px) {
+  .header {
+    padding: 30px 40px;
+  }
+  .header__right > p {
+    padding: 12px 8px;
+  }
+  .header__right > .header__rightLanguage {
+    font-weight: 600;
+    padding: 12px 4px;
+  }
 }

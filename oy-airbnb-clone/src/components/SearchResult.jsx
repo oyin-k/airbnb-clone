@@ -22,7 +22,7 @@ function SearchResult({
         <div className="searchResult__infoTop">
           <p>{location}</p>
           <h3>{title}</h3>
-          <p>___</p>
+          <p className="searchResult__infoTopDivider">___</p>
           <p>{description}</p>
         </div>
         <div className="searchResult__infoBottom">
@@ -33,8 +33,8 @@ function SearchResult({
             </p>
           </div>
           <div className="searchResult__price">
-            <h2>{price}</h2>
-            <p>{total}</p>
+            <h2>{price}/night</h2>
+            <p>{total} total</p>
           </div>
         </div>
       </div>
