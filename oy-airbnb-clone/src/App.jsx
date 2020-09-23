@@ -33,7 +33,7 @@ function App() {
 
   useEffect(() => {
     const results = apartments.filter((apartment) =>
-      apartment.title.toLowerCase().includes(value)
+      apartment.title.toLowerCase().includes(value.toLowerCase())
     );
     setFilteredResult(results);
   }, [value]);
