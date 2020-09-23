@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import SearchIcon from "@material-ui/icons/Search";
@@ -9,7 +9,7 @@ import { Avatar } from "@material-ui/core";
 import "./Header.css";
 import logo from "../airbnblogo.png";
 
-function Header() {
+function Header({ value, handleChange }) {
   return (
     <div className="header">
       <div className="header__left">
@@ -19,7 +19,12 @@ function Header() {
       </div>
 
       <div className="header__center">
-        <input type="text" placeholder="Start your search" />
+        <input
+          type="text"
+          placeholder="Start your search"
+          value={value}
+          onChange={handleChange}
+        />
         <SearchIcon />
       </div>
 

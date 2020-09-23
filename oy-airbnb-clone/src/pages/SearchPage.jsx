@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import { db } from "../services/firebase";
-
 import { Button } from "@material-ui/core";
 
 import SearchResult from "../components/SearchResult";
@@ -9,25 +7,7 @@ import SkeletonCard from "../components/SkeletonCard";
 
 import "./SearchPage.css";
 
-function SearchPage() {
-  const [apartments, setApartments] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-    const unsub = db.collection("apartments").onSnapshot((snapshot) => {
-      const allApartments = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setApartments(allApartments);
-      setLoading(false);
-    });
-    return () => {
-      unsub();
-    };
-  }, []);
-
+function SearchPage({ apartments, loading }) {
   return (
     <div className="searchPage">
       <div className="searchPage__info">
