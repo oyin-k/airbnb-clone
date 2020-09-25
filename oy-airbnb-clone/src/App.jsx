@@ -19,17 +19,21 @@ function App() {
 
   useEffect(() => {
     setLoading(true);
-    const unsub = db.collection("apartments").onSnapshot((snapshot) => {
-      const allApartments = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setApartments(allApartments);
-      setLoading(false);
-    });
-    return () => {
-      unsub();
-    };
+    db.collection("apartments")
+      .get()
+      .then((data) => {
+        let allApartments = [];
+        data.forEach((doc) => {
+          allApartments.push({
+            id: doc.id,
+            ...doc.data(),
+          });
+        });
+        console.log(allApartments);
+        setApartments(allApartments);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {

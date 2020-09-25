@@ -23,8 +23,8 @@ function SkeletonCardHome() {
     <div style={div}>
       {Array(3)
         .fill()
-        .map(() => (
-          <div className="card">
+        .map((item, index) => (
+          <div className="card" key={index}>
             <div className="card__image">
               <Skeleton height={200} width={`100%`} />
             </div>
