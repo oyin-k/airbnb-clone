@@ -72,9 +72,10 @@
   margin-top: 8px;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 768px) {
   .searchResult {
     flex-direction: column;
+    margin: 0;
   }
   .searchResult > img {
     width: 100%;

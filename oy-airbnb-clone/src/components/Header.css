@@ -1,5 +1,6 @@
 .header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   position: sticky;
@@ -24,7 +25,6 @@
 
 .header__center {
   display: flex;
-  flex: 1;
   align-items: center;
   /* max-width: fit-content; */
   flex: 1 1 20%;
@@ -60,43 +60,41 @@
   align-items: center;
   justify-content: flex-end;
   flex: 1 1 8rem;
-  /* width: 20vw; */
-  /* margin-right: 80px; */
 }
 
-.header__right > p {
+.header__right p {
   font-size: 14px;
   font-weight: 600;
   padding: 12px 16px;
 }
 
-.header__right > p:hover {
+.header__right p:hover {
   cursor: pointer;
   background-color: #f7f7f7;
   border-radius: 30px;
 }
 
-.header__right > .header__rightLanguage {
+.header__right .header__rightLanguage {
   font-weight: 600;
   padding: 12px 16px;
 }
 
-.header__right > .header__rightLanguage > svg {
+.header__right .header__rightLanguage > svg {
   width: 1rem !important;
   height: 1rem !important;
 }
 
-.header__right > .header__rightLanguage:hover {
+.header__right .header__rightLanguage:hover {
   cursor: pointer;
   background-color: #f7f7f7;
   border-radius: 30px;
 }
 
-.header__right > .header__rightAvatar {
+.header__right .header__rightAvatar {
   padding: 0 8px;
 }
 
-.header__right > .header__rightAvatar svg {
+.header__right .header__rightAvatar svg {
   font-size: 1rem !important;
 }
 
@@ -104,11 +102,28 @@
   .header {
     padding: 30px 40px;
   }
-  .header__right > p {
+  .header__right p {
     padding: 12px 8px;
   }
-  .header__right > .header__rightLanguage {
+  .header__right .header__rightLanguage {
     font-weight: 600;
     padding: 12px 4px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 30px 20px;
+  }
+  .header__left {
+    flex: none;
+    width: 30%;
+  }
+  .header__center {
+    display: none;
+  }
+  .header__right {
+    flex: none;
+    width: 30%;
   }
 }

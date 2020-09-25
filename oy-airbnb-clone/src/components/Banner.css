@@ -10,11 +10,13 @@
   color: white;
   padding: 20vh 3rem 2.5rem 5rem;
   width: 300px;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 1000px) {
   .banner__info {
     padding: 14vh 3rem 2rem 3rem;
+    width: 100%;
   }
 }
 
