@@ -8,7 +8,7 @@ const pStyle = {
 function SkeletonCard() {
   return (
     <div>
-      {Array(4)
+      {Array(5)
         .fill()
         .map((item, index) => (
           <div className="searchResult" key={index}>

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { Button } from "@material-ui/core";
 
 import SearchResult from "../components/SearchResult";
-import SkeletonCard from "../components/SkeletonCard";
+import SkeletonCard from "../components/SkeletonCardSearch";
 
 import "./SearchPage.css";
 

@@ -4,8 +4,9 @@ import Banner from "../components/Banner";
 import Card from "../components/Card";
 
 import "./Home.css";
+import SkeletonCardHome from "../components/SkeletonCardHome";
 
-function Home() {
+function Home({ topApartments, loading }) {
   return (
     <div className="home">
       <Banner />
@@ -27,24 +28,17 @@ function Home() {
         />
       </section>
       <section className="home__section">
-        <Card
-          src="https://a0.muscache.com/im/pictures/0fc40f88-2c64-44a0-af36-2368a6855248.jpg?aki_policy=large"
-          title="3 Bedroom Bungalow"
-          description="A new built Chalet in a serene estate"
-          price="$40/night"
-        />
-        <Card
-          src="https://a0.muscache.com/im/pictures/840816af-ead6-42e6-9fdb-a6645a289a10.jpg?aki_policy=large"
-          title="Penthouse in Maitama"
-          description="Amazing penthouse apartment with premium luxury"
-          price="$80/night"
-        />
-        <Card
-          src="https://a0.muscache.com/im/pictures/a0188a96-3118-4048-8eb0-89037d978a85.jpg?aki_policy=large"
-          title="Luxury 3 Bedroom"
-          description="Live like and elder stateman with this apartment"
-          price="$100/night"
-        />
+        {loading && <SkeletonCardHome />}
+        {!loading &&
+          topApartments.map((topApartment) => (
+            <Card
+              key={topApartment.id}
+              src={topApartment.image}
+              title={topApartment.title}
+              description={topApartment.description}
+              price={topApartment.price}
+            />
+          ))}
       </section>
     </div>
   );

@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import SearchPage from "./pages/SearchPage";
 import Footer from "./components/Footer";
+import Page404 from "./pages/Page404";
 
 function App() {
   const [apartments, setApartments] = useState([]);
@@ -36,7 +37,7 @@ function App() {
       apartment.title.toLowerCase().includes(value.toLowerCase())
     );
     setFilteredResult(results);
-  }, [value]);
+  }, [apartments, value]);
 
   const handleChange = (e) => {
     setValue(e);
@@ -51,15 +52,16 @@ function App() {
         />
 
         <Switch>
-          <Route path="/search">
+          <Route exact path="/search">
             <SearchPage
               apartments={value.length < 1 ? apartments : filteredResult}
               loading={loading}
             />
           </Route>
-          <Route path="/">
-            <Home />
+          <Route exact path="/">
+            <Home topApartments={apartments.slice(0, 3)} loading={loading} />
           </Route>
+          <Route component={Page404} />
         </Switch>
 
         <Footer />
