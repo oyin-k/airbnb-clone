@@ -1,4 +1,4 @@
-.searchResult {
+.searchResult > a {
   display: flex;
   position: relative;
   margin: 20px;
@@ -12,7 +12,7 @@
   opacity: 0.8;
 }
 
-.searchResult > img {
+.searchResult img {
   height: 200px;
   width: 350px;
   border-radius: 10px;
@@ -73,11 +73,11 @@
 }
 
 @media screen and (max-width: 768px) {
-  .searchResult {
+  .searchResult > a {
     flex-direction: column;
     margin: 0;
   }
-  .searchResult > img {
+  .searchResult img {
     width: 100%;
   }
   .searchResult__info {

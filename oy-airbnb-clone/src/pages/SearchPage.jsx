@@ -24,6 +24,7 @@ function SearchPage({ apartments, loading }) {
         apartments.map((apartment) => (
           <SearchResult
             key={apartment.id}
+            id={apartment.id}
             img={apartment.image}
             location={apartment.location}
             title={apartment.title}

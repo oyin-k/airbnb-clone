@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import SearchPage from "./pages/SearchPage";
 import Footer from "./components/Footer";
 import Page404 from "./pages/Page404";
+import Details from "./pages/Details";
 
 function App() {
   const [apartments, setApartments] = useState([]);
@@ -19,21 +20,24 @@ function App() {
 
   useEffect(() => {
     setLoading(true);
-    db.collection("apartments")
-      .get()
-      .then((data) => {
-        let allApartments = [];
-        data.forEach((doc) => {
-          allApartments.push({
-            id: doc.id,
-            ...doc.data(),
-          });
-        });
+    const unsub = db.collection("apartments").onSnapshot(
+      (snapshot) => {
+        const allApartments = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
         console.log(allApartments);
         setApartments(allApartments);
         setLoading(false);
-      })
-      .catch((err) => console.log(err));
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+    return () => {
+      console.log("cleanup");
+      unsub();
+    };
   }, []);
 
   useEffect(() => {
@@ -61,6 +65,9 @@ function App() {
               apartments={value.length < 1 ? apartments : filteredResult}
               loading={loading}
             />
+          </Route>
+          <Route exact path="/details/:id">
+            <Details />
           </Route>
           <Route exact path="/">
             <Home topApartments={apartments.slice(0, 3)} loading={loading} />

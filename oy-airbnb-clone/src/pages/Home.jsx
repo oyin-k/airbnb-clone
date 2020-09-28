@@ -33,6 +33,7 @@ function Home({ topApartments, loading }) {
           topApartments.map((topApartment) => (
             <Card
               key={topApartment.id}
+              id={topApartment.id}
               src={topApartment.image}
               title={topApartment.title}
               description={topApartment.description}
