@@ -10,7 +10,6 @@ const StyledRightNav = styled.div`
   display: flex;
 
   @media screen and (max-width: 768px) {
-    /* display: none; */
     flex-flow: column nowrap;
     box-shadow: -10px 0 20px 0 rgba(0, 0, 0, 0.07);
     background-color: white;

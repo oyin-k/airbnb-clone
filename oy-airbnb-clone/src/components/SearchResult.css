@@ -4,7 +4,6 @@
   margin: 20px;
   padding: 20px;
   border-bottom: 1px solid lightgray;
-  /* opacity: 1; */
   cursor: pointer;
 }
 
@@ -79,6 +78,7 @@
   }
   .searchResult img {
     width: 100%;
+    object-fit: cover;
   }
   .searchResult__info {
     display: flex;
@@ -114,7 +114,6 @@
   .searchResult__infoBottom {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
   }
 
   .searchResult__stars {

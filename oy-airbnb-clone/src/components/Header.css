@@ -8,9 +8,7 @@
   background-color: #fff;
   padding: 20px 80px;
   z-index: 100;
-  /* width: 100%; */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.07);
-  /* padding: 0 80px; */
 }
 
 .header__left {
@@ -20,13 +18,11 @@
 .header__icon {
   object-fit: contain;
   height: 40px;
-  /* margin-left: 80px; */
 }
 
 .header__center {
   display: flex;
   align-items: center;
-  /* max-width: fit-content; */
   flex: 1 1 20%;
   padding: 10px;
   height: 30px;

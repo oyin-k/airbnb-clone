@@ -26,7 +26,6 @@ function App() {
           id: doc.id,
           ...doc.data(),
         }));
-        console.log(allApartments);
         setApartments(allApartments);
         setLoading(false);
       },
@@ -35,7 +34,6 @@ function App() {
       }
     );
     return () => {
-      console.log("cleanup");
       unsub();
     };
   }, []);
